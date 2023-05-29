@@ -28,7 +28,7 @@ namespace QueryCEP.API.Controllers
             if (cachedData != null) return Ok(cachedData);
 
             cachedData = await _infoService.ProcessInfo(cep);
-            var expiryTime = DateTimeOffset.Now.AddSeconds(30);
+            var expiryTime = DateTimeOffset.Now.AddMinutes(30);
             _cacheService.SetData<Cep>("ceps", cachedData, expiryTime);
 
             return Ok(cachedData);
