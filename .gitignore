@@ -1,3 +1,5 @@
 [Bb]in/
 [Oo]bj/
 keys/
+
+src/QueryCEP.API/appsettings.json

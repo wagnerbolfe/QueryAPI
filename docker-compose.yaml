@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo
+    container_name: "mongodb"
+    environment:
+      - AUTH=no
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodbdata:/data/db
+
+  redisdb:
+    image: redis
+    command: redis-server
+    ports:
+      - "6379:6379"
+    volumes:
+      - cache:/data
+
+  query-api:
+    image: docker.io/library/query.api:v1
+    depends_on:
+      - "mongodb"
+      - "redisdb"
+    container_name: queryapp-services
+    ports:
+      - "5000:5000"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - JWT__ValidAudience=User
+      - JWT__ValidIssuer=https://localhost:5001
+      - JWT__Secret=d28df0b4ab81efcc
+      - MongoDbSettings__ConnectionString=mongodb://mongodb:27017/
+      - MongoDbSettings__DatabaseName=InfoCep
+      - RedisSettings__ConnectionString=redisdb:6379
+      - ASPNETCORE_URLS=http://+:5000
+
+volumes:
+  mongodbdata:
+  cache:
