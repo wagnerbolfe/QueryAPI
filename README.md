@@ -14,7 +14,7 @@ docker-compose up --build
 
 Irá subir as imagens do MongoDb, Redis e da Aplicação.
 
-Segue a collection do Postman para teste:
+Segue a collection do Postman para teste (Entrar no arquivo, e ir em Download raw file)
 - [Postman Collection](https://github.com/wagnerbolfe/QueryAPI/blob/main/Desafio.postman_collection.json)
 
 
