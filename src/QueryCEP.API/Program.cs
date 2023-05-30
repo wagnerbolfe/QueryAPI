@@ -6,12 +6,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using QueryCEP.API.Entities;
-using QueryCEP.API.Repositories;
 using QueryCEP.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -74,7 +72,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICacheService, CacheService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IInfoService, InfoService>();
-builder.Services.AddScoped<IInfoRepository, InfoRepository>();
 
 builder.Services.AddHttpClient();
 
