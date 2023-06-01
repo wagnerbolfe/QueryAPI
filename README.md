@@ -18,3 +18,6 @@ Segue a collection do Postman para teste (Entrar no arquivo, e ir em Download ra
 - [Postman Collection](https://github.com/wagnerbolfe/QueryAPI/blob/main/Desafio.postman_collection.json)
 
 
+Para criar o usuário, antes é necessário criar a role USER.
+
+
